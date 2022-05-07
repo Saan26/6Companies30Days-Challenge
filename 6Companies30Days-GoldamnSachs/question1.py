@@ -16,6 +16,3 @@ def printAnagramsTogether(words):
 		print(" ".join(groupedWords[group]))
 
 
-if __name__ == "__main__":
-	arr = ["cat", "act", "god","dog", "tac"]
-	printAnagramsTogether(arr)
