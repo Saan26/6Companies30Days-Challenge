@@ -1,0 +1,31 @@
+# Sorted subsequence of size 3 
+
+class Solution:
+    def find3number(self,A, n):
+        small=[0]*n
+        large=[0]*n
+        _min=A[0]
+        for i,a in enumerate(A):
+            if a>_min:
+                small[i]=_min
+            else:
+                _min=a
+                small[i]=-1
+
+    
+        _max=A[-1]
+        for i,a in enumerate(reversed(A)):
+            if a<_max:
+                large[i]=_max
+            else:
+                _max=a
+                large[i]=-1
+    
+        large=large[::-1]
+    
+        for i in range(len(A)):
+            if small[i]!=-1 and large[i]!=-1:
+                return [small[i],A[i],large[i]]
+    
+    
+        return []

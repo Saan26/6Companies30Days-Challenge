@@ -1,0 +1,23 @@
+# Divide Two Integers
+
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        s = 1 if (dividend > 0) == (divisor > 0) else -1
+        
+        dividend, divisor = abs(dividend), abs(divisor)
+        answer = 0
+        
+        
+        while dividend >= divisor:
+            t, i = divisor, 1
+            while dividend >= t:
+                dividend -= t
+        
+                answer += i
+                i <<= 1
+                t <<= 1
+
+        if s < 0:
+            answer = -answer
+
+        return min(max(-2147483648, answer), 2147483647)

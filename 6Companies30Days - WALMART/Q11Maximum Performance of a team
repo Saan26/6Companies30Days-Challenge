@@ -1,0 +1,19 @@
+# Maximum Performance of a team 
+
+import heapq
+class Soultion:
+    def maxPerformance(self, n:int, speed: List[int], efficiency: List[int], k:int) -> int:
+        engg = [(speed[i], efficiency[i])for i in range(n)]
+        engg.sort(key = lambda x : (-x[1],x[0]))
+        sum_ = 0
+        ans = 0
+        hq = []
+        
+        for i in range(n):
+            
+            while k <= len(hq):
+                sum_ -= heapq.heappop(hq)
+            ans = max(ans, (sum_ + engg[i][0]) * engg[i][1])
+            heapq.heappush(hq, engg[i][0])
+            sum_ += engg[i][0]
+        return ans % (10**9 + 7)
